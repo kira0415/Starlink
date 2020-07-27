@@ -1,0 +1,27 @@
+.sat-setting{
+    text-align: left;
+    padding: 10px;
+    border: 2px solid #ccc;
+}
+
+.setting-label {
+    color: #777;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.setting-list{
+    margin-bottom: 8px;
+}
+
+.two-item-col {
+    display: flex;
+}
+
+.list-item label, .altitude-setting span{
+    font-size: 1em;
+}
+
+.right-item {
+    margin-left: 16px;
+}
