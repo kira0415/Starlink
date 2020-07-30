@@ -1,16 +1,54 @@
 import React, { Component } from 'react'
-import { InputNumber } from 'antd';
+import { InputNumber, Slider, Button } from 'antd';
 
 class SatSetting extends Component {
+    constructor() {
+        super();
+        this.state = {
+            observerLat: 0,
+            observerLong: 0,
+            observerElevation: 0,
+            satAlt: 90,
+            duration: [0, 90]
+        }
+    }
     onChangeLong = (value) => {
-        console.log(value);
+        this.setState({
+            observerLong: value
+        });
     }
 
     onChangeLat = (value) => {
-        console.log(value);
+        this.setState({
+            observerLat: value
+        });
+    }
+
+    onChangeEle = (value) => {
+        this.setState({
+            observerElevation: value
+        });
+    }
+
+    onChangeAlt = (value) => {
+        this.setState({
+            satAlt: Number(90 - +value)
+        });
+    }
+
+    onDurationChange = (value) => {
+        this.setState({
+            duration: value
+        });
+    }
+
+    showSatellite = () => {
+        this.props.onShow(this.state);
     }
 
     render() {
+        const durationMarkers = { 0: '0', 45: '45', 90: '90'};
+        const { observerLat, observerLong, observerElevation, satAlt, duration } = this.state;
         return (
             <div className="sat-setting">
                 <div className="loc-setting">
@@ -19,7 +57,7 @@ class SatSetting extends Component {
                         <div className="list-item">
                             <label>Longitude: </label>
                             <InputNumber min={-180} max={180} 
-                                        defaultValue={0} 
+                                        defaultValue={observerLat} 
                                         style={{margin: "0 2px"}}
                                         onChange={this.onChangeLong} />
                         </div>
@@ -27,11 +65,49 @@ class SatSetting extends Component {
                             <label>Latitude: </label>
                             <InputNumber placeholder="latitude"
                                         min={-90} max={90} 
-                                        defaultValue={0} 
+                                        defaultValue={observerLong} 
                                         style={{margin: "0 2px"}}
                                         onChange={this.onChangeLat} />
                         </div>
-                    </div> 
+                    </div>
+                    <div className="setting-list">
+                        <div className="list-item">
+                            <label>Elevation(meters): </label>
+                            <InputNumber min={-413} max={8850} 
+                                        defaultValue={observerElevation} 
+                                        style={{margin: "0 2px"}}
+                                        onChange={this.onChangeEle} />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="altitude-setting">
+                    <p className="setting-label">Restrictions</p>
+                    <div>
+                        <span>Show only satellites which are higher than <br /> altitude</span>
+                        <InputNumber min={0} max={90} 
+                                        defaultValue={0} 
+                                        style={{margin: "8px 2px 0"}}
+                                        onChange={this.onChangeAlt} /> <span>degrees.</span>
+                    </div>
+                </div>
+
+                <div className="duration-setting">
+                    <p className="setting-label">Duration(sec):</p>
+                    <Slider className="duration-slider"
+                            min={0} max={90}
+                            range
+                            step={1}
+                            defaultValue={duration}
+                            marks={durationMarkers}
+                            onChange={this.onDurationChange}/>
+                </div>
+
+                <div className="show-nearby">
+                    <Button className="show-nearby-button" size="large"
+                            onClick={this.showSatellite}>
+                        Find Nearby Satellites
+                    </Button>
                 </div>
             </div>
         )

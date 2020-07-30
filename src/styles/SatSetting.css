@@ -11,7 +11,7 @@
 }
 
 .setting-list{
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .two-item-col {
@@ -24,4 +24,46 @@
 
 .right-item {
     margin-left: 16px;
+}
+
+.duration-setting {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.duration-slider {
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.ant-slider-handle {
+    border: solid 2px #1f6099;
+}
+.ant-slider-track {
+    background-color: #1f6099;
+}
+
+.ant-slider:hover .ant-slider-track{
+    background-color: #1f6099;
+}
+
+.ant-slider-dot-active {
+    border: solid 2px #1f6099
+}
+
+.show-nearby {
+    display: flex;
+    justify-content: center;
+    margin-top: 3px;
+}
+
+.show-nearby-button {
+    text-transform: none;
+    padding: 10px 22px;
+    background-color: #4eadb4;
+    font-size: 1em;
+    color: #fff;
 }
