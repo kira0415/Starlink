@@ -5,5 +5,6 @@ export const SAT_API_KEY = "ZEXLKG-XDMPME-D3ANLY-4IAG";
 export const STARLINK_CATEGORY = "52";
 
 export const NEARBY_SATELLITE = `${SAT_BASE_URL}/above`;
+export const SATELLITE_POSITION_URL = `${SAT_BASE_URL}/positions`;
 
 export const WORLD_MAP_URL = "https://unpkg.com/world-atlas@1/world/110m.json";

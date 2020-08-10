@@ -14,10 +14,10 @@
 }
 
 .spin-box {
-    margin-top: 150px;
-    display: flex;
+    height: 370px;
+    display:flex;
+    align-items: center;
     justify-content: center;
-    align-items: middle;
 }
 
 .sat-list{

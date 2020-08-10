@@ -15,8 +15,9 @@ class SatelliteList extends Component {
         const { dataInfo, checked } = e.target;
         const { selected } = this.state;
         const list = this.addOrRemove(dataInfo, checked, selected);
-        console.log(list);
-        this.setState({selected: list});
+        this.setState(preState => {
+            return {selected: list}
+        });
     }
 
     addOrRemove = (item, status, list) => {
@@ -32,6 +33,12 @@ class SatelliteList extends Component {
         }
         return list;
 
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(prevProps.satInfo !== this.props.satInfo) {
+            this.setState({selected: []})
+        }
     }
 
     showMap = () => {
